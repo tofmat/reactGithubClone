@@ -1,0 +1,142 @@
+.content {
+  padding: 0 8%;
+}
+.noView {
+  display: none;
+}
+.headInfo {
+  display: flex;
+  flex-direction: column;
+}
+.lhs {
+  width: 23%;
+  margin-top: -30px;
+}
+.rhs {
+  width: 75%;
+}
+.lhImage {
+  position: relative;
+}
+.lhImage img {
+  border-radius: 50% !important;
+  width: 100%;
+  height: 280px;
+}
+.babyFace svg {
+  border: solid #b5b9be 0.1px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: white;
+  fill: var(--blackish-grey);
+}
+.babyFace {
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  z-index: 2;
+  margin-bottom: 32px;
+  margin-left: -60px;
+}
+.userInfo h1 {
+  font-size: 26px;
+  line-height: 1.25;
+  color: var(--blackish-grey);
+  margin-bottom: 1px;
+}
+.userInfo h2 {
+  font-style: normal;
+  font-weight: 300;
+  color: var(--muchText);
+  margin-top: 0 !important;
+}
+.de {
+  color: var(--blackish-grey) !important;
+  font-weight: 400 !important;
+  margin-bottom: 20px;
+}
+.userInfo button {
+  width: 100%;
+  border: solid rgba(27, 31, 35, 0.15) 1px;
+  padding: 5px 10px;
+  color: var(--blackish-grey);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  border-radius: 6px;
+  background-color: var(--buttonKini);
+  margin-bottom: 20px;
+}
+.foll svg {
+  fill: #6a737d;
+}
+.foll span {
+  color: var(--blacktowhite);
+}
+.foll {
+  color: #6a737d;
+  font-size: 14px;
+}
+.foll a {
+  text-decoration: none;
+  color: #6a737d;
+}
+.cli:hover {
+  color: #0366d6 !important;
+}
+.details {
+  margin: 20px 0;
+  padding-bottom: 20px;
+  font-size: 14px;
+  color: var(--blackish-grey);
+  border-bottom: #b5b9be solid 1px;
+}
+.details svg {
+  margin-right: 10px;
+  fill: var(--blacktowhite);
+}
+.nobottomBorder {
+  border-bottom: none;
+}
+@media (max-width: 1350px) {
+  .content {
+    padding: 0 1%;
+  }
+}
+@media (max-width: 900px) {
+  .mainKini {
+    flex-direction: column;
+  }
+  .noView {
+    display: block;
+  }
+  .lhs {
+    width: auto;
+    margin-top: 10px;
+  }
+  .rhs {
+    width: auto;
+  }
+  .headInfo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .lhImage img {
+    border-radius: 50% !important;
+    width: 100px;
+    height: auto;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+  .babyFace {
+    display: none;
+  }
+  .highlights,
+  .organizations {
+    display: none;
+  }
+  .informations {
+    border-bottom: none;
+  }
+}
