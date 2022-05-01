@@ -1,0 +1,97 @@
+body {
+  margin: 0px !important;
+  background-color: var(--body-back-color);
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+}
+button {
+  cursor: pointer;
+  outline: none;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
+    sans-serif, Apple Color Emoji, Segoe UI Emoji;
+}
+.pointer {
+  cursor: pointer;
+}
+.flex {
+  display: flex;
+}
+.items-center {
+  align-items: center;
+}
+h1 {
+  font-weight: 600;
+}
+.fill-white {
+  fill: white;
+}
+.mr-16 {
+  margin-right: 16px;
+}
+.form-control {
+  padding: 2px 5px;
+  vertical-align: middle;
+  border-radius: 6px;
+  outline: none;
+}
+.mr-8 {
+  margin-right: 8px;
+}
+.mr-5 {
+  margin-right: 5px;
+}
+.mt-60 {
+  margin-top: 60px;
+}
+.px-15 {
+  padding: 0 15px;
+}
+ul {
+  padding: 0px;
+  margin: 0px;
+}
+.mx-10 {
+  margin: 10px 0;
+}
+.flex-auto {
+  flex: auto;
+}
+.mxx-6 {
+  margin: 0 6px;
+}
+.ml-6 {
+  margin-left: 6px;
+}
+.mb-15 {
+  margin-bottom: 15px;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.columnFlex {
+  flex-direction: column;
+}
+.justify-center {
+  justify-content: center;
+}
+:root {
+  /* Variables for default theme (light-mode) */
+  --body-back-color: white;
+  --blackish-grey: #24292e;
+  --checkedCursor: black;
+  --muchText: #586069;
+  --buttonKini: #fafbfc;
+  --borderKini: #e1e4e8;
+  --blacktowhite: black;
+}
+
+[data-theme="darkMode"] {
+  /* Variables for dark mode */
+  --body-back-color: #0d1117;
+  --blackish-grey: #8b949e;
+  --checkedCursor: #3c1e70;
+  --muchText: #8b949e;
+  --buttonKini: #21262d;
+  --borderKini: #30363d;
+  --blacktowhite: white;
+}
