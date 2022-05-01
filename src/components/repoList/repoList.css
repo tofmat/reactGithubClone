@@ -80,6 +80,7 @@
 .repoItem h1 a {
   text-decoration: none;
   color: #0366d6;
+  font-size: 20px;
 }
 .repoItem h1 a:hover {
   text-decoration: underline;
@@ -108,6 +109,9 @@
 }
 .left {
   width: 75%;
+}
+.left h1 {
+  margin: 0;
 }
 .right {
   width: 25%;
