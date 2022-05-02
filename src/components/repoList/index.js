@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useCallback } from "react";
 import "./repoList.css";
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
@@ -7,16 +7,108 @@ import { repos } from "../../features/github/githubSlice";
 export const RepoList = () => {
   const repositories = useSelector(repos);
   const [search, setSearch] = useState("");
+  const filteredItem = useCallback(
+    () =>
+      repositories.filter((item) => {
+        return item.name.toLowerCase().indexOf(search.toLowerCase()) > -1;
+      }),
+    [repositories, search]
+  );
 
-  useEffect(() => {
-    filteredItem();
-  });
-  const filteredItem = () => {
-    return repositories.filter((item) => {
-      return item.name.toLowerCase().indexOf(search.toLowerCase()) > -1;
-    });
+  const RepoList = ({ data }) => {
+    return data.slice(0, 20).map((repo) => (
+      <>
+        <div className="flex repoItem" key={repo.name}>
+          <div className="left">
+            <h1>
+              <a href={repo.html_url} target="_blank" rel="noreferrer">
+                {repo.name}
+              </a>
+            </h1>
+            {repo.fork && (
+              <small className="noRepo">Forked from {repo.full_name}</small>
+            )}
+            {repo.description && <p>{repo.description}</p>}
+            <div className="flex">
+              {repo.language && (
+                <div className="flex items-center">
+                  {repo.language === "HTML" && (
+                    <span
+                      className="repo-language-color mr-5"
+                      // eslint-disable-next-line react/style-prop-object
+                      style={{ backgroundColor: "#e34c26" }}
+                    ></span>
+                  )}
+                  {repo.language === "JavaScript" && (
+                    <span
+                      className="repo-language-color mr-5"
+                      // eslint-disable-next-line react/style-prop-object
+                      style={{ backgroundColor: "#f1e05a" }}
+                    ></span>
+                  )}
+                  {repo.language === "SCSS" && (
+                    <span
+                      className="repo-language-color mr-5"
+                      // eslint-disable-next-line react/style-prop-object
+                      style={{ backgroundColor: "#c6538c" }}
+                    ></span>
+                  )}
+                  {repo.language === "CSS" && (
+                    <span
+                      className="repo-language-color mr-5"
+                      // eslint-disable-next-line react/style-prop-object
+                      style={{ backgroundColor: "#563d7c" }}
+                    ></span>
+                  )}
+                  {repo.language === "Vue" && (
+                    <span
+                      className="repo-language-color mr-5"
+                      // eslint-disable-next-line react/style-prop-object
+                      style={{ backgroundColor: "#2c3e50" }}
+                    ></span>
+                  )}
+                  {repo.language === "HTML" && (
+                    <span
+                      className="repo-language-color mr-5"
+                      // eslint-disable-next-line react/style-prop-object
+                      style={{ backgroundColor: "#e34c26" }}
+                    ></span>
+                  )}
+                  <p className="mr-16">{repo.language}</p>
+                </div>
+              )}
+              <p>
+                Updated on{" "}
+                <span>
+                  <Moment format="MMMM Do YYYY" fromNow interval={1000}>
+                    {repo.updated_at}
+                  </Moment>
+                </span>{" "}
+              </p>
+            </div>
+          </div>
+          <div className="right">
+            <button className="flex items-align mb-15">
+              <svg
+                className="octicon octicon-star mr-5 blacckk"
+                viewBox="0 0 16 16"
+                version="1.1"
+                width="16"
+                height="16"
+                aria-hidden="true"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"
+                ></path>
+              </svg>
+              Star
+            </button>
+          </div>
+        </div>
+      </>
+    ));
   };
-  const [newRepo] = useState(filteredItem);
   return (
     <div>
       <div className="repoList">
@@ -58,103 +150,7 @@ export const RepoList = () => {
           </div>
         </div>
 
-        {repositories.slice(0, 20).map((repo) => (
-          <>
-            <div className="flex repoItem" key={repo.name}>
-              <div className="left">
-                <h1>
-                  <a href={repo.html_url} target="_blank" rel="noreferrer">
-                    {repo.name}
-                  </a>
-                </h1>
-                {repo.fork && (
-                  <small className="noRepo">Forked from {repo.full_name}</small>
-                )}
-                {repo.description && <p>{repo.description}</p>}
-                <div className="flex">
-                  {repo.language && (
-                    <div className="flex items-center">
-                      {repo.language === "HTML" && (
-                        <span
-                          className="repo-language-color mr-5"
-                          // eslint-disable-next-line react/style-prop-object
-                          style={{ backgroundColor: "#e34c26" }}
-                        ></span>
-                      )}
-                      {repo.language === "JavaScript" && (
-                        <span
-                          className="repo-language-color mr-5"
-                          // eslint-disable-next-line react/style-prop-object
-                          style={{ backgroundColor: "#f1e05a" }}
-                        ></span>
-                      )}
-                      {repo.language === "SCSS" && (
-                        <span
-                          className="repo-language-color mr-5"
-                          // eslint-disable-next-line react/style-prop-object
-                          style={{ backgroundColor: "#c6538c" }}
-                        ></span>
-                      )}
-                      {repo.language === "CSS" && (
-                        <span
-                          className="repo-language-color mr-5"
-                          // eslint-disable-next-line react/style-prop-object
-                          style={{ backgroundColor: "#563d7c" }}
-                        ></span>
-                      )}
-                      {repo.language === "Vue" && (
-                        <span
-                          className="repo-language-color mr-5"
-                          // eslint-disable-next-line react/style-prop-object
-                          style={{ backgroundColor: "#2c3e50" }}
-                        ></span>
-                      )}
-                      {repo.language === "HTML" && (
-                        <span
-                          className="repo-language-color mr-5"
-                          // eslint-disable-next-line react/style-prop-object
-                          style={{ backgroundColor: "#e34c26" }}
-                        ></span>
-                      )}
-                      <p className="mr-16">{repo.language}</p>
-                    </div>
-                  )}
-                  <p>
-                    {" "}
-                    Updated
-                    <span>
-                      <Moment
-                        format="MMMM Do YYYY, h:mm:ss a"
-                        fromNow
-                        interval={1000}
-                      >
-                        {repo.updated_at}
-                      </Moment>
-                    </span>{" "}
-                  </p>
-                </div>
-              </div>
-              <div className="right">
-                <button className="flex items-align mb-15">
-                  <svg
-                    className="octicon octicon-star mr-5 blacckk"
-                    viewBox="0 0 16 16"
-                    version="1.1"
-                    width="16"
-                    height="16"
-                    aria-hidden="true"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25zm0 2.445L6.615 5.5a.75.75 0 01-.564.41l-3.097.45 2.24 2.184a.75.75 0 01.216.664l-.528 3.084 2.769-1.456a.75.75 0 01.698 0l2.77 1.456-.53-3.084a.75.75 0 01.216-.664l2.24-2.183-3.096-.45a.75.75 0 01-.564-.41L8 2.694v.001z"
-                    ></path>
-                  </svg>
-                  Star
-                </button>
-              </div>
-            </div>
-          </>
-        ))}
+        <RepoList data={filteredItem()} />
 
         {repositories.length === 0 && (
           <h1 className="text-center noRepo">

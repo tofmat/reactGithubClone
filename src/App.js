@@ -15,7 +15,7 @@ function App() {
     window.addEventListener("hashchange", function () {
       checkUser();
     });
-  }, []);
+  });
   async function checkUser() {
     const user = supabase.auth.user();
     dispatch(SET_AUTH_USER(user));
