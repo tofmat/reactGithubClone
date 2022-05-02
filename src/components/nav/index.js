@@ -70,7 +70,7 @@ export const Nav = () => {
               <div className="headSearch">
                 <form action="" className="">
                   <label
-                    for=""
+                    htmlFor=""
                     className="form-control search-wrapper flex items-center"
                   >
                     <input
@@ -142,35 +142,35 @@ export const Nav = () => {
 
       {display && (
         <>
-          <div class="mobileHeader header noView">
-            <div class="playground">
-              <div class="flex deskNav columnFlex">
-                <div class="headSearch">
-                  <form action="" class="">
+          <div className="mobileHeader header noView">
+            <div className="playground">
+              <div className="flex deskNav columnFlex">
+                <div className="headSearch">
+                  <form action="" className="">
                     <label
-                      for=""
-                      class="form-control search-wrapper flex items-center"
+                      htmlFor=""
+                      className="form-control search-wrapper flex items-center"
                     >
                       <input
                         type="text"
                         placeholder="Search or jump to..."
-                        class="form-control"
+                        className="form-control"
                       />
-                      <img src={slash} alt="slash" class="mr-8" />
+                      <img src={slash} alt="slash" className="mr-8" />
                     </label>
                   </form>
                 </div>
                 <nav>
                   <ul>
-                    <li class="navLink">Desktop</li>
-                    <li class="navLink">Pull requests</li>
-                    <li class="navLink">Issues</li>
-                    <li class="navLink">Marketplace</li>
-                    <li class="navLink">Explore</li>
-                    <li class="navLink">Settings</li>
-                    <li class="navLink">
-                      <div class="flex imageMenu">
-                        <a href="/" class="mr-5">
+                    <li className="navLink">Desktop</li>
+                    <li className="navLink">Pull requests</li>
+                    <li className="navLink">Issues</li>
+                    <li className="navLink">Marketplace</li>
+                    <li className="navLink">Explore</li>
+                    <li className="navLink">Settings</li>
+                    <li className="navLink">
+                      <div className="flex imageMenu">
+                        <a href="/" className="mr-5">
                           <img
                             src={profile && profile.avatar_url}
                             alt="user"
@@ -181,10 +181,10 @@ export const Nav = () => {
                         tofmat
                       </div>
                     </li>
-                    <li class="navLink">
-                      <div class="flex imageMenu">
+                    <li className="navLink">
+                      <div className="flex imageMenu">
                         <svg
-                          class="
+                          className="
                       octicon octicon-sign-out
                       v-align-middle
                       mr-5

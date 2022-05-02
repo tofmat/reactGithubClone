@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./repoList.css";
 import { useSelector } from "react-redux";
 import Moment from "react-moment";
@@ -8,37 +8,40 @@ export const RepoList = () => {
   const repositories = useSelector(repos);
   const [search, setSearch] = useState("");
 
-  // const [filteredItem] = useState(
-  //   repositories.filter((item) => {
-  //     return item.name.toLowerCase().indexOf(search.toLowerCase()) > -1;
-  //   })
-  // );
-
+  useEffect(() => {
+    filteredItem();
+  });
+  const filteredItem = () => {
+    return repositories.filter((item) => {
+      return item.name.toLowerCase().indexOf(search.toLowerCase()) > -1;
+    });
+  };
+  const [newRepo] = useState(filteredItem);
   return (
     <div>
-      <div class="repoList">
-        <div class="flex repoSearch scrollX">
-          <div class="flex-auto">
+      <div className="repoList">
+        <div className="flex repoSearch scrollX">
+          <div className="flex-auto">
             <input
               type="text"
               placeholder="Find a repository..."
-              class="repoInput"
+              className="repoInput"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
           </div>
-          <div class="flex">
-            <button class="mxx-6 notGreen flex items-center">
+          <div className="flex">
+            <button className="mxx-6 notGreen flex items-center">
               <span>Type:</span> All
-              <span class="dropdown-caret ml-6"></span>
+              <span className="dropdown-caret ml-6"></span>
             </button>
-            <button class="mxx-6 notGreen notGreen flex items-center">
+            <button className="mxx-6 notGreen notGreen flex items-center">
               <span>Language:</span> All
-              <span class="dropdown-caret ml-6"></span>
+              <span className="dropdown-caret ml-6"></span>
             </button>
-            <button class="ml-6 text-center flex items-center">
+            <button className="ml-6 text-center flex items-center">
               <svg
-                class="octicon octicon-repo"
+                className="octicon octicon-repo"
                 height="16"
                 viewBox="0 0 16 16"
                 version="1.1"
@@ -65,55 +68,55 @@ export const RepoList = () => {
                   </a>
                 </h1>
                 {repo.fork && (
-                  <small class="noRepo">Forked from {repo.full_name}</small>
+                  <small className="noRepo">Forked from {repo.full_name}</small>
                 )}
                 {repo.description && <p>{repo.description}</p>}
                 <div className="flex">
                   {repo.language && (
-                    <div class="flex items-center">
+                    <div className="flex items-center">
                       {repo.language === "HTML" && (
                         <span
-                          class="repo-language-color mr-5"
+                          className="repo-language-color mr-5"
                           // eslint-disable-next-line react/style-prop-object
                           style={{ backgroundColor: "#e34c26" }}
                         ></span>
                       )}
                       {repo.language === "JavaScript" && (
                         <span
-                          class="repo-language-color mr-5"
+                          className="repo-language-color mr-5"
                           // eslint-disable-next-line react/style-prop-object
                           style={{ backgroundColor: "#f1e05a" }}
                         ></span>
                       )}
                       {repo.language === "SCSS" && (
                         <span
-                          class="repo-language-color mr-5"
+                          className="repo-language-color mr-5"
                           // eslint-disable-next-line react/style-prop-object
                           style={{ backgroundColor: "#c6538c" }}
                         ></span>
                       )}
                       {repo.language === "CSS" && (
                         <span
-                          class="repo-language-color mr-5"
+                          className="repo-language-color mr-5"
                           // eslint-disable-next-line react/style-prop-object
                           style={{ backgroundColor: "#563d7c" }}
                         ></span>
                       )}
                       {repo.language === "Vue" && (
                         <span
-                          class="repo-language-color mr-5"
+                          className="repo-language-color mr-5"
                           // eslint-disable-next-line react/style-prop-object
                           style={{ backgroundColor: "#2c3e50" }}
                         ></span>
                       )}
                       {repo.language === "HTML" && (
                         <span
-                          class="repo-language-color mr-5"
+                          className="repo-language-color mr-5"
                           // eslint-disable-next-line react/style-prop-object
                           style={{ backgroundColor: "#e34c26" }}
                         ></span>
                       )}
-                      <p class="mr-16">{repo.language}</p>
+                      <p className="mr-16">{repo.language}</p>
                     </div>
                   )}
                   <p>
@@ -131,10 +134,10 @@ export const RepoList = () => {
                   </p>
                 </div>
               </div>
-              <div class="right">
-                <button class="flex items-align mb-15">
+              <div className="right">
+                <button className="flex items-align mb-15">
                   <svg
-                    class="octicon octicon-star mr-5 blacckk"
+                    className="octicon octicon-star mr-5 blacckk"
                     viewBox="0 0 16 16"
                     version="1.1"
                     width="16"
@@ -154,7 +157,9 @@ export const RepoList = () => {
         ))}
 
         {repositories.length === 0 && (
-          <h1 class="text-center noRepo">There's no repo here at the moment</h1>
+          <h1 className="text-center noRepo">
+            There's no repo here at the moment
+          </h1>
         )}
       </div>
     </div>
