@@ -181,7 +181,7 @@ export const Nav = () => {
                         tofmat
                       </div>
                     </li>
-                    <li className="navLink">
+                    <li className="navLink" onClick={signOut}>
                       <div className="flex imageMenu">
                         <svg
                           className="
