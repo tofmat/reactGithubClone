@@ -25,6 +25,45 @@ h1 {
 .fill-white {
   fill: white;
 }
+.fullPage {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  background-color: #0d1117;
+}
+.mainContent {
+  display: flex;
+  justify-content: center;
+  padding: 3em 1em;
+  flex-direction: column;
+}
+.middle-box {
+  padding: 2rem 3em 3rem;
+  background: #f6f8ff;
+  border-radius: 16px;
+  width: 42%;
+  margin: auto;
+  text-align: center;
+}
+
+.middle-box button {
+  background: #0d1117;
+  color: white;
+  padding: 10px 30px;
+  border: none;
+}
+
+@media (max-width: 1200px) {
+  .middle-box {
+    min-width: 70% !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .mainContent {
+    padding: 1.7em 0.5em;
+  }
+}
 .mr-16 {
   margin-right: 16px;
 }

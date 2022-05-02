@@ -1,36 +1,18 @@
 import React, { useState } from "react";
 import "./repoList.css";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import Moment from "react-moment";
-import {
-  repos,
-  clearRepos,
-  getNewRepos,
-} from "../../features/github/githubSlice";
+import { repos } from "../../features/github/githubSlice";
 
 export const RepoList = () => {
-  const dispatch = useDispatch();
   const repositories = useSelector(repos);
   const [search, setSearch] = useState("");
-  const [pageNumber] = useState(1);
 
   // const [filteredItem] = useState(
   //   repositories.filter((item) => {
   //     return item.name.toLowerCase().indexOf(search.toLowerCase()) > -1;
   //   })
   // );
-
-  const clickPagNext = () => {
-    window.scrollTo(0, 0);
-    dispatch(clearRepos(), pageNumber + 1);
-    dispatch(getNewRepos(), pageNumber + 1);
-  };
-
-  const clickPagPrev = () => {
-    window.scrollTo(0, 0);
-    dispatch(clearRepos(), pageNumber - 1);
-    dispatch(getNewRepos(), pageNumber - 1);
-  };
 
   return (
     <div>
@@ -73,7 +55,7 @@ export const RepoList = () => {
           </div>
         </div>
 
-        {repositories.map((repo) => (
+        {repositories.slice(0, 20).map((repo) => (
           <>
             <div className="flex repoItem" key={repo.name}>
               <div className="left">
@@ -174,15 +156,6 @@ export const RepoList = () => {
         {repositories.length === 0 && (
           <h1 class="text-center noRepo">There's no repo here at the moment</h1>
         )}
-
-        <div class="pagination flex items-center justify-center">
-          <button class="previous" onCLick={clickPagPrev}>
-            Previous
-          </button>
-          <button class="next" onCLick={clickPagNext}>
-            Next
-          </button>
-        </div>
       </div>
     </div>
   );

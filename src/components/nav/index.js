@@ -1,9 +1,15 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { supabase } from "../../client";
 import slash from "../../assets/slash.svg";
-import { user } from "../../features/github/githubSlice";
+import { user, SET_AUTH_USER } from "../../features/github/githubSlice";
 import "./nav.css";
 export const Nav = () => {
+  const dispatch = useDispatch();
+  async function signOut() {
+    await supabase.auth.signOut();
+    dispatch(SET_AUTH_USER(null));
+  }
   const profile = useSelector(user);
   const [display, setDisplay] = useState(false);
   const onDisplay = () => {
@@ -121,7 +127,7 @@ export const Nav = () => {
               </a>
             </div>
             <div className="imageMenu navIte noMobile">
-              <a href="/">
+              <a href="/" onClick={signOut}>
                 <img
                   src={profile && profile.avatar_url}
                   alt="aas"

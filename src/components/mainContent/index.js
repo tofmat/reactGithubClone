@@ -1,12 +1,11 @@
 import React from "react";
 import { RepoList } from "../repoList";
 import { useSelector } from "react-redux";
-import { user, starsItemCount, orgs } from "../../features/github/githubSlice";
+import { user, authenicatedUser } from "../../features/github/githubSlice";
 import "./mainContent.css";
 export const MainContent = () => {
+  const authUser = useSelector(authenicatedUser);
   const profile = useSelector(user);
-  const starsItem = useSelector(starsItemCount);
-  const organizations = useSelector(orgs);
   return (
     <div>
       <div class="content flex mainKini">
@@ -85,7 +84,7 @@ export const MainContent = () => {
                   ></path>
                 </svg>
                 <a href="/" class="cli">
-                  <span class="mr-5">{starsItem}</span>
+                  <span class="mr-5">15</span>
                 </a>
               </div>
             </div>
@@ -104,7 +103,7 @@ export const MainContent = () => {
                     d="M1.75 2A1.75 1.75 0 000 3.75v.736a.75.75 0 000 .027v7.737C0 13.216.784 14 1.75 14h12.5A1.75 1.75 0 0016 12.25v-8.5A1.75 1.75 0 0014.25 2H1.75zM14.5 4.07v-.32a.25.25 0 00-.25-.25H1.75a.25.25 0 00-.25.25v.32L8 7.88l6.5-3.81zm-13 1.74v6.441c0 .138.112.25.25.25h12.5a.25.25 0 00.25-.25V5.809L8.38 9.397a.75.75 0 01-.76 0L1.5 5.809z"
                   ></path>
                 </svg>
-                {profile && profile.email}
+                {authUser && authUser.email}
               </div>
               <div class="flex items-center mx-10" v-if="user && user.blog">
                 <svg
@@ -173,25 +172,6 @@ export const MainContent = () => {
                 Developer Program Member
               </div>
             </div>
-            {organizations && organizations.length > 0 && (
-              <>
-                <div class="details nobottomBorder organizations">
-                  <h3>Organizations</h3>
-                  <div class="flex items-center mx-10 scrollX">
-                    {organizations.map}
-                    {organizations.map((organization) => (
-                      <img
-                        src={organization.avatar_url}
-                        alt="orgs"
-                        width="32px"
-                        height="32px"
-                        key={organization.name}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </>
-            )}
           </div>
         </div>
         <div class="rhs px-15">

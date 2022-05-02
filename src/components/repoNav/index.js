@@ -50,8 +50,7 @@ export const RepoNav = () => {
                         </svg>
                         Repositories{" "}
                         <span className="counter">
-                          {profile &&
-                            profile.public_repos + profile.total_private_repos}
+                          {profile && profile.public_repos}
                         </span>
                       </a>
                     </li>
