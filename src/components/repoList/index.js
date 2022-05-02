@@ -78,9 +78,13 @@ export const RepoList = () => {
                 </div>
               )}
               <p>
-                Updated on{" "}
+                Updated{" "}
                 <span>
-                  <Moment format="MMMM Do YYYY" fromNow interval={1000}>
+                  <Moment
+                    // format="MMMM Do YYYY"
+                    fromNow
+                    interval={1000}
+                  >
                     {repo.updated_at}
                   </Moment>
                 </span>{" "}

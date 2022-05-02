@@ -67,7 +67,7 @@ export const getRepos = (data) => async (dispatch) => {
   try {
     dispatch(SET_LOADING(true));
     let response = await axios.get(
-      `https://api.github.com/users/${data}/repos`
+      `https://api.github.com/users/${data}/repos?sort="updated"`
     );
     dispatch(SET_REPOS(response.data));
     dispatch(SET_LOADING(false));
